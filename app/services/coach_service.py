@@ -43,7 +43,7 @@ MENU D'EXERCICES PRÉ-SÉLECTIONNÉS (Choisis-en 3 à 5 là-dedans) :
 RÈGLES ABSOLUES :
 1. N'utilise QUE le "name" exact des exercices du menu ci-dessus. N'invente AUCUN exercice.
 2. Définis des "sets", "reps" (répétitions logiques) et "rest_time" adaptés à l'énergie ({daily_state.energy_level}/10).
-3. Adapte la "description" pour expliquer l'intérêt de l'exercise par rapport à son sport favori ({user.favorite_sports[0]}).
+3. Adapte la "description" pour expliquer l'intérêt de l'exercise par rapport à son sport favori ({user.favorite_sports[0] if user.favorite_sports else ''}).
 4. Renvoie le tout dans un format JSON valide.
 
 FORMAT JSON ATTENDU :

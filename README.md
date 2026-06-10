@@ -1,14 +1,14 @@
-# 🏋️‍♂️ VibeSport - Coach Sportif Intelligent (IA Générative & RAG Local)
+# 🏋️‍♂️ VibeSport - Coach Sportif Intelligent
 
-**VibeSport** est une application web moderne intégrant une architecture client/serveur, une API RESTful **FastAPI**, et un moteur d'intelligence artificielle locale via **Ollama (Llama 3.2)**.
+**VibeSport** est une application web intégrant une architecture client/serveur, une API REST **FastAPI** et un moteur d'intelligence artificielle locale via **Ollama (Llama 3.2)**.
 
-Cette application permet à un utilisateur de s'inscrire, de définir ses préférences sportives et de générer à la demande des séances d'entraînement personnalisées et adaptées à sa forme du jour, tout en conservant un historique de ses entrainements.
+Cette application permet à un utilisateur de s'inscrire, de définir ses préférences sportives et de générer des séances d'entraînement personnalisées et adaptées à ses sports favoris ainsi qu'à sa forme du jour, tout en conservant un historique de ses 10 derniers entraînements.
 
 ---
 
 ## 🚀 Démarrage Rapide
 
-Si vous avez **Docker Desktop** d'installé, lancez le projet en une seule commande depuis la racine du dossier :
+Si vous avez **Docker Desktop** installé, lancez le projet en une seule commande depuis la racine du dossier :
 
 ```bash
 docker compose up -d --build
@@ -23,15 +23,15 @@ Patientez 1 à 2 minutes, puis ouvrez [http://localhost:8000](http://localhost:8
 
 L'application repose sur un écosystème découplé et conteneurisé composé de trois briques majeures :
 
-1. **Le Frontend (Client d'interface) :** Une application monopage (SPA) conçue en HTML5, CSS3 (Bootstrap 5) et JavaScript Vanilla. Elle gère dynamiquement l'état local, le stockage persistant de la session et la restitution visuelle des séances générées avec des liens vers des tutoriels vidéos.
+1. **Le Frontend (Client d'interface) :** Une application conçue en HTML5, CSS3 (Bootstrap 5) et JavaScript Vanilla. Elle gère dynamiquement l'état local, le stockage persistant de la session et la restitution visuelle des séances générées avec des liens vers des tutoriels vidéos.
 2. **Le Backend (Serveur API REST) :** Une API développée avec **FastAPI (Python 3.11)**. Elle valide les payloads via **Pydantic**, expose la documentation Swagger et orchestre la logique métier de l'application.
-3. **Le Moteur LLM Local & RAG :** Le backend extrait un catalogue local d'exercices physiques (`exercises.json`), filtre les mouvements pertinents selon la zone ciblée par l'athlète, puis injecte ce menu ultra-ciblé dans un *System Prompt* transmis à **Ollama**. C'est le principe du **RAG (Retrieval-Augmented Generation)**, qui empêche l'IA d'inventer des mouvements inexistants.
+3. **Le Moteur LLM Local & RAG :** Le backend extrait un catalogue local d'exercices physiques (`exercises.json`), filtre les mouvements pertinents selon la zone ciblée par l'athlète, puis injecte ce menu ciblé dans un *System Prompt* transmis à **Ollama**. C'est le principe du **RAG (Retrieval-Augmented Generation)**, qui empêche l'IA d'inventer des exercises ou mouvements inexistants.
 
 ---
 
 ## 📂 2. Structure du Projet
 
-Conformément aux bonnes pratiques de développement logiciel et de séparation des responsabilités transmises durant les workshops, le projet applique une structure modulaire stricte :
+Conformément aux bonnes pratiques de développement logiciel et de séparation des responsabilités transmises durant les workshops, le projet applique une structure modulaire :
 
 
 ```
@@ -42,10 +42,11 @@ vibesport/
 │   │
 │   ├── core/
 │   │   ├── config.py            # Centralisation des variables d'environnement
+│   │   ├── factory.py           # Pattern "Application Factory" (Config FastAPI, CORS, Swagger et Frontend statique)
 │   │   └── dependencies.py      # Dépendances globales (Sécurité Simple Auth)
 │   │
 │   ├── routers/
-│   │   ├── health.py            # Vérifie si L'API et Ollama sont fonctionnelles
+│   │   ├── health.py            # Vérifie si L'API et Ollama sont fonctionnels
 │   │   └── users.py             # Routeur HTTP RESTful orienté ressource (Users)
 │   │
 │   ├── schemas/
@@ -64,8 +65,8 @@ vibesport/
 │
 ├── .dockerignore                # Fichiers exclus du build Docker (légèreté et isolation)
 ├── Dockerfile                   # Recette de construction de l'image de l'API FastAPI
-├── compose.yaml                 # Orchestration multi-conteneurs (App + Moteur Ollama)
-└── requirements.txt             # Gestion rigoureuse des dépendances et de leurs versions
+├── docker-compose.yml           # Orchestration multi-conteneurs (App + Moteur Ollama)
+└── requirements.txt             # Gestion des dépendances et de leurs versions
 ```
 
 ---
@@ -171,7 +172,7 @@ Patientez simplement 1 à 2 minutes (selon votre connexion) jusqu'à ce que le c
 
 Le bon fonctionnement de l'application a fait l'objet de tests, validés à travers les logs d'exécution de la stack Docker :
 
-1. **Validation du Self-Healing (404 contrôlé) :** Au démarrage, le frontend a cherché un ancien utilisateur résiduel. Le serveur a répondu `404 Not Found`. Le client a effacé son stockage local et a affiché proprement la création de profil.
+1. **Validation du Self-Healing (404) :** Face à un profil introuvable (serveur réinitialisé), le frontend gère la désynchronisation du localStorage en vidant le username et en réaffichant l'écran d'inscription.
 2. **Validation de l'Onboarding (201 Created) :** Soumission d'un nouvel utilisateur `pierre`. Le backend a traité et renvoyé le statut de succès attendu :
 
 ```text
