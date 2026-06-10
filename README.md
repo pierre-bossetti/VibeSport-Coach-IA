@@ -180,9 +180,9 @@ vibesport-web  | INFO: 192.168.65.1:22857 - "POST /users/pierre/workouts/generat
 
 
 
-### 📈 Analyse Critique de Sécurité (Livrable de Fin d'Étude)
+### 📈 Analyse Critique de Sécurité
 
-Dans le cadre de ce prototype (MVP) réalisé en 2 semaines, la clé secrète `X-API-Token` est hébergée au sein du fichier de configuration global JavaScript (`app.js`). Nous soulignons que dans une infrastructure d'entreprise réelle, stocker une clé d'en-tête côté client constitue une vulnérabilité (détectable via l'onglet Réseau de l'inspecteur).
+Dans le cadre de ce prototype (MVP) réalisé en 2 semaines, la clé secrète `X-API-Token` est hébergée au sein du fichier de configuration global JavaScript (`app.js`). Dans une infrastructure d'entreprise réelle, stocker une clé d'en-tête côté client constitue une vulnérabilité (détectable via l'onglet Réseau de l'inspecteur).
 Pour une mise en production industrielle, ce système évoluerait vers :
 
 * L'intégration d'une authentification **JWT (JSON Web Token)** dynamique avec paires de clés éphémères (*Access/Refresh Token*) conformément au support de cours avancé.

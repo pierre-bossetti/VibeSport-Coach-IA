@@ -7,8 +7,24 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama # Sauvegarde le modèle pour ne pas le retélécharger à chaque fois
+    healthcheck:
+      test: [ "CMD", "ollama", "list" ]
+      interval: 3s
+      timeout: 3s
+      retries: 10
 
-  # 2. NOTRE APPLICATION (FASTAPI + FRONTEND)
+  # 2. Téléchargeur Automatique du Modèle Llama 3.2
+  ollama-pull:
+    image: ollama/ollama:latest
+    container_name: vibesport-ollama-pull
+    environment:
+      - OLLAMA_HOST=ollama:11434
+    depends_on:
+      ollama:
+        condition: service_healthy # 🌟 Docker attend que le "healthcheck" d'Ollama soit au vert !
+    command: sh -c "ollama pull llama3.2 && echo '🧠 Modèle Llama 3.2 installé avec succès !'"
+
+  # 3. NOTRE APPLICATION (FASTAPI + FRONTEND)
   web:
     build: . # Construit l'image à partir de ton Dockerfile
     container_name: vibesport-web
@@ -18,7 +34,8 @@ services:
       # On dit à FastAPI d'aller chercher l'IA sur le conteneur "ollama"
       - OLLAMA_BASE_URL=http://ollama:11434
     depends_on:
-      - ollama # On s'assure qu'Ollama démarre en premier
+      ollama:
+        condition: service_healthy # FastAPI attend aussi qu'Ollama soit parfaitement prêt !
 
 volumes:
   ollama_data:

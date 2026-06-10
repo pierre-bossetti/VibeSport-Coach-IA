@@ -14,7 +14,7 @@ def create_app() -> FastAPI:
     ]
 
     app = FastAPI(
-        title="Coach Sportif IA API",
+        title="VibeSport - Coach Sportif Intelligent",
         debug=settings.debug,
         version="1.0.0",
         description="API FastAPI + Ollama pour la génération de programmes sportifs sur mesure",
