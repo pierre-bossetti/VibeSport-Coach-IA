@@ -127,32 +127,21 @@ Disposer de **Docker Desktop** démarré sur votre machine.
 
 ### 2. Lancement de la stack applicative
 
-Placez-vous à la racine du projet (là où se trouve le fichier `compose.yaml`) et exécutez la commande d'assemblage :
+Placez-vous à la racine du projet et exécutez l'unique commande d'assemblage :
 
 ```bash
 docker compose up -d --build
-
 ```
+C'est tout ! L'orchestration est entièrement automatisée. Grâce à un Bilan de santé (Healthcheck) sur le moteur IA et à un Conteneur d'initialisation (Init Container), le modèle llama3.2 se téléchargera tout seul en tâche de fond dès que le serveur sera prêt.
 
-*Cette commande va télécharger l'image d'Ollama, construire l'image de l'API FastAPI à partir du `Dockerfile`, isoler le code en respectant le `.dockerignore`, lier les volumes de données et exposer les ports.*
+Patientez simplement 1 à 2 minutes (selon votre connexion) jusqu'à ce que le conteneur vibesport-ollama-pull affiche "Exited (0)", puis accédez aux interfaces ci-dessous :
 
-### 3. Initialisation du modèle d'Intelligence Artificielle
+### 3. Accès aux interfaces
 
-Le conteneur Ollama démarre initialement "vide". Pour télécharger localement le modèle requis (`llama3.2`), exécutez la commande d'injection directe dans le conteneur actif :
-
-```bash
-docker compose exec ollama ollama pull llama3.2
-
-```
-
-Une fois le téléchargement complété à 100%, la stack est pleinement opérationnelle !
-
-### 4. Accès aux interfaces
-
-* **Interface Frontend de VibeSport :** `http://localhost:8000` (ou double-cliquez directement sur votre fichier `index.html`).
+* **Interface Frontend de VibeSport :** `http://localhost:8000`
 * **Documentation Interactive Swagger :** `http://localhost:8000/docs`
 
-### 5. Commandes de maintenance utiles
+### 4. Commandes de maintenance utiles
 
 * **Consulter les logs de l'API en temps réel :** `docker compose logs -f api`
 * **Vérifier le statut de santé des conteneurs :** `docker compose ps`

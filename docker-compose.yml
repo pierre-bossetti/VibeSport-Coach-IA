@@ -22,7 +22,7 @@ services:
     depends_on:
       ollama:
         condition: service_healthy # 🌟 Docker attend que le "healthcheck" d'Ollama soit au vert !
-    command: sh -c "ollama pull llama3.2 && echo '🧠 Modèle Llama 3.2 installé avec succès !'"
+    command: pull llama3.2
 
   # 3. NOTRE APPLICATION (FASTAPI + FRONTEND)
   web:
