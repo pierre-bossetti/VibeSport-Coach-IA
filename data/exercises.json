@@ -1,0 +1,352 @@
+[
+  {
+    "name": "Goblet Squat",
+    "target": "Force globale et posture",
+    "zone": "Bas du corps",
+    "description_base": "Tenir un poids contre la poitrine. Descendre en gardant le dos droit pour reproduire le mouvement de ramasser un objet au sol.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+goblet+squat"
+  },
+  {
+    "name": "Développé militaire (Overhead Press)",
+    "target": "Épaules et tronc",
+    "zone": "Haut du corps",
+    "description_base": "Pousser une charge au-dessus de la tête en engageant la ceinture abdominale pour protéger la colonne.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+developpe+militaire"
+  },
+  {
+    "name": "Marches du fermier (Farmer carries)",
+    "target": "Force de préhension et posture",
+    "zone": "Tout le corps",
+    "description_base": "Marcher en tenant des charges lourdes dans chaque main, le dos droit et la poitrine sortie.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+marches+du+fermier"
+  },
+  {
+    "name": "Pompes contre le mur",
+    "target": "Poitrine, épaules et triceps",
+    "zone": "Haut du corps",
+    "description_base": "En appui contre un mur, fléchir les bras pour rapprocher le buste, puis repousser. Idéal pour préserver les articulations.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+pompes+contre+le+mur"
+  },
+  {
+    "name": "Élévations de talons",
+    "target": "Mollets, équilibre et circulation",
+    "zone": "Bas du corps",
+    "description_base": "Monter sur la pointe des pieds de manière contrôlée, puis redescendre lentement.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+elevations+talons"
+  },
+  {
+    "name": "Rucking (Marche lestée)",
+    "target": "Endurance, densité osseuse et chaîne postérieure",
+    "zone": "Tout le corps",
+    "description_base": "Marcher à un bon rythme avec un sac à dos lesté (commencer léger). Garder une posture droite.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+rucking+marche+lestee"
+  },
+  {
+    "name": "Montée et descente de banc (Step-up / Step-down)",
+    "target": "Stabilité genou et hanche",
+    "zone": "Bas du corps",
+    "description_base": "Monter sur un banc ou une chaise stable, puis redescendre en freinant le mouvement (phase excentrique) le plus lentement possible.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+step+up+step+down+lent"
+  },
+  {
+    "name": "Bird Dog (Chien d'arrêt)",
+    "target": "Stabilité du tronc et schémas moteurs",
+    "zone": "Gainage",
+    "description_base": "À quatre pattes, tendre simultanément le bras droit et la jambe gauche en gardant le dos parfaitement plat, puis alterner.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+bird+dog+exercice"
+  },
+  {
+    "name": "Cat-Cow (Dos creux / Dos rond)",
+    "target": "Mobilité de la colonne vertébrale",
+    "zone": "Mobilité",
+    "description_base": "À quatre pattes, alterner une position de dos rond en rentrant la tête, puis de dos creux en regardant vers le haut, de manière fluide.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+cat+cow+mobilite"
+  },
+  {
+    "name": "Squats Cosaques",
+    "target": "Mobilité des hanches et adducteurs",
+    "zone": "Bas du corps",
+    "description_base": "Descendre en squat sur une seule jambe en gardant l'autre tendue sur le côté, puis alterner.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+squat+cosaque"
+  },
+  {
+    "name": "Dislocates avec bâton",
+    "target": "Mobilité de la capsule de l'épaule",
+    "zone": "Mobilité",
+    "description_base": "Tenir un bâton (ou une serviette) à deux mains de manière large, et faire passer le bâton d'avant en arrière par-dessus la tête en gardant les bras tendus.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+shoulder+dislocates+baton"
+  },
+  {
+    "name": "Chien tête en bas (Downward Dog)",
+    "target": "Étirement de la chaîne postérieure",
+    "zone": "Mobilité",
+    "description_base": "Former un V inversé avec le corps : mains et pieds au sol, hanches poussées vers le plafond.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+chien+tete+en+bas"
+  },
+  {
+    "name": "Fentes avant alternées",
+    "target": "Quadriceps et fessiers",
+    "zone": "Bas du corps",
+    "description_base": "Faire un grand pas en avant, fléchir les deux genoux à 90 degrés, puis repousser pour revenir en position initiale.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+fentes+avant"
+  },
+  {
+    "name": "Fentes bulgares",
+    "target": "Force unilatérale des jambes",
+    "zone": "Bas du corps",
+    "description_base": "Un pied posé sur un banc derrière soi, descendre le genou arrière vers le sol en gardant le buste droit.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+fentes+bulgares"
+  },
+  {
+    "name": "Pont fessier (Glute bridge)",
+    "target": "Activation des fessiers et lombaires",
+    "zone": "Bas du corps",
+    "description_base": "Allongé sur le back, genoux pliés. Pousser sur les talons pour lever le bassin vers le plafond.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+glute+bridge"
+  },
+  {
+    "name": "Soulevé de terre roumain (RDL)",
+    "target": "Ischio-jambiers et chaîne postérieure",
+    "zone": "Bas du corps",
+    "description_base": "Jambes semi-tendues, pousser les hanches vers l'arrière en gardant le dos droit pour sentir l'étirement à l'arrière des cuisses.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+souleve+de+terre+roumain"
+  },
+  {
+    "name": "Squat sauté",
+    "target": "Puissance explosive",
+    "zone": "Bas du corps",
+    "description_base": "Effectuer un squat classique puis exploser vers le haut en sautant. Amortir doucement à la réception.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+squat+saute"
+  },
+  {
+    "name": "Pompes classiques",
+    "target": "Pectoraux, épaules et triceps",
+    "zone": "Haut du corps",
+    "description_base": "En planche, fléchir les bras jusqu'à frôler le sol, puis repousser en gardant le corps parfaitement aligné.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+pompes+classiques"
+  },
+  {
+    "name": "Pompes sur les genoux",
+    "target": "Haut du corps (Adaptation)",
+    "zone": "Haut du corps",
+    "description_base": "Même mouvement que la pompe classique, mais en prenant appui sur les genoux pour réduire la charge.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+pompes+genoux"
+  },
+  {
+    "name": "Dips sur chaise",
+    "target": "Triceps et épaules",
+    "zone": "Haut du corps",
+    "description_base": "Mains en appui sur le bord d'une chaise derrière soi, descendre le bassin vers le sol en pliant les coudes.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+dips+chaise"
+  },
+  {
+    "name": "Tirage dos (Rowing avec sac)",
+    "target": "Muscles du dos et posture",
+    "zone": "Haut du corps",
+    "description_base": "Penché en avant le dos droit, tirer une charge (haltère ou sac) vers le nombril en resserrant les omoplates.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+rowing+dos"
+  },
+  {
+    "name": "Planche classique",
+    "target": "Gainage global",
+    "zone": "Gainage",
+    "description_base": "En appui sur les avant-bras et les pointes de pieds, maintenir le corps droit comme une planche. Rétroverser le bassin.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+planche+gainage"
+  },
+  {
+    "name": "Planche latérale",
+    "target": "Obliques (Gainage latéral)",
+    "zone": "Gainage",
+    "description_base": "En appui sur un seul avant-bras et le côté du pied, lever le bassin pour aligner le corps.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+planche+laterale"
+  },
+  {
+    "name": "Planche tape-épaules",
+    "target": "Stabilité du tronc et épaules",
+    "zone": "Gainage",
+    "description_base": "En position de pompe, venir toucher l'épaule opposée avec une main sans laisser les hanches bouger.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+planche+tape+epaules"
+  },
+  {
+    "name": "Dead Bug (Insecte mort)",
+    "target": "Abdominaux profonds",
+    "zone": "Gainage",
+    "description_base": "Allongé sur le dos, bras et jambes en l'air. Tendre un bras et la jambe opposée vers le sol sans creuser le dos.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+dead+bug+exercice"
+  },
+  {
+    "name": "Russian Twists",
+    "target": "Obliques et rotation",
+    "zone": "Gainage",
+    "description_base": "Assis, buste incliné en arrière. Tourner les épaules pour amener les mains (avec ou sans poids) de chaque côté du corps.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+russian+twist"
+  },
+  {
+    "name": "Superman (Extension lombaire)",
+    "target": "Bas du corps",
+    "zone": "Gainage",
+    "description_base": "Allongé sur le ventre, décoller simultanément la poitrine et les cuisses du sol en contractant les lombaires.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+superman+exercice"
+  },
+  {
+    "name": "Crunch inversé",
+    "target": "Abdominaux inférieurs",
+    "zone": "Gainage",
+    "description_base": "Allongé sur le dos, ramener les genoux vers la poitrine en enroulant légèrement le bas du dos pour décoller le bassin.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+crunch+inverse"
+  },
+  {
+    "name": "Hollow Body Hold",
+    "target": "Gainage gymnique",
+    "zone": "Gainage",
+    "description_base": "Allongé sur le dos, décoller les épaules et les jambes tendues. Le bas du dos doit rester plaqué au sol.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+hollow+body+hold"
+  },
+  {
+    "name": "Burpees",
+    "target": "Cardio et explosivité globale",
+    "zone": "Tout le corps",
+    "description_base": "Poser les mains au sol, jeter les pieds en arrière (planche), ramener les pieds, puis sauter en l'air.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+burpees"
+  },
+  {
+    "name": "Mountain Climbers",
+    "target": "Cardio et sangle abdominale",
+    "zone": "Tout le corps",
+    "description_base": "En position de pompe, ramener alternativement les genoux vers la poitrine le plus rapidement possible.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+mountain+climbers"
+  },
+  {
+    "name": "Jumping Jacks",
+    "target": "Échauffement cardio",
+    "zone": "Tout le corps",
+    "description_base": "Sauter en écartant les jambes et en levant les bras au-dessus de la tête simultanément.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+jumping+jacks"
+  },
+  {
+    "name": "Skaters (Sauts de patineur)",
+    "target": "Stabilité latérale et cardio",
+    "zone": "Bas du corps",
+    "description_base": "Sauter d'un pied sur l'autre latéralement en croisant la jambe libre derrière soi, comme un patineur de vitesse.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+skater+jumps"
+  },
+  {
+    "name": "Kettlebell Swing (ou sac)",
+    "target": "Puissance des hanches",
+    "zone": "Tout le corps",
+    "description_base": "Pousser les hanches vers l'arrière, puis contracter fort les fessiers pour propulser la charge en avant (les bras servent juste de pendule).",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+kettlebell+swing"
+  },
+  {
+    "name": "Fente basse (Étirement Psoas)",
+    "target": "Mobilité fléchisseurs de hanche",
+    "zone": "Mobilité",
+    "description_base": "Un genou au sol, l'autre pied devant. Avancer le bassin pour étirer l'avant de la cuisse de la jambe arrière.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+etirement+psoas"
+  },
+  {
+    "name": "Étirement 90/90",
+    "target": "Rotation des hanches",
+    "zone": "Mobilité",
+    "description_base": "Assis au sol, une jambe pliée à 90° devant, l'autre à 90° derrière. Basculer le buste vers l'avant puis changer de côté.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+mobilite+90+90"
+  },
+  {
+    "name": "Rotation thoracique au sol",
+    "target": "Mobilité du haut du dos",
+    "zone": "Mobilité",
+    "description_base": "Allongé sur le côté, genoux pliés. Ouvrir le bras supérieur pour venir toucher le sol de l'autre côté.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+rotation+thoracique+sol"
+  },
+  {
+    "name": "Posture de l'enfant",
+    "target": "Relâchement lombaire et dorsal",
+    "zone": "Mobilité",
+    "description_base": "À genoux, asseyez-vous sur vos talons et étirez les bras loin devant vous en posant le front au sol.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+posture+de+l+enfant"
+  },
+  {
+    "name": "Étirement ischio-jambiers couché",
+    "target": "Souplesse arrière de cuisse",
+    "zone": "Mobilité",
+    "description_base": "Allongé sur le dos, lever une jambe tendue vers le plafond et la tirer doucement vers soi avec les mains (ou une serviette).",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+etirement+ischio+jambiers"
+  },
+  {
+    "name": "Oiseau (Rear delt fly)",
+    "target": "Arrière des épaules et posture",
+    "zone": "Haut du corps",
+    "description_base": "Penché en avant, le dos droit. Lever les bras sur les côtés avec des poids légers en resserrant les omoplates.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+oiseau+arriere+epaule"
+  },
+  {
+    "name": "Tractions (Pull-ups / Chin-ups)",
+    "target": "Grand dorsal et biceps",
+    "zone": "Haut du corps",
+    "description_base": "Suspendu à une barre, tirer son corps vers le haut jusqu'à passer le menton au-dessus de la barre. Redescendre en contrôlant.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+tractions+pull+ups"
+  },
+  {
+    "name": "Tirage inversé (Inverted Row)",
+    "target": "Dos et posture (Alternative tractions)",
+    "zone": "Haut du corps",
+    "description_base": "Sous une barre basse, une table solide ou des anneaux, le corps gainé, tirer sa poitrine vers le point de fixation.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+tirage+inverse+inverted+row"
+  },
+  {
+    "name": "Marche de l'ours (Bear Crawl)",
+    "target": "Stabilité globale et tronc (DNS)",
+    "zone": "Tout le corps",
+    "description_base": "À quatre pattes, genoux légèrement décollés du sol. Avancer en avançant simultanément la main et le pied opposés. Le dos doit rester plat comme une table.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+marche+de+l+ours+bear+crawl"
+  },
+  {
+    "name": "Hip Thrust",
+    "target": "Puissance des fessiers",
+    "zone": "Bas du corps",
+    "description_base": "Le haut du dos en appui sur un banc, une charge sur le bassin. Pousser sur les talons pour lever le bassin vers le plafond jusqu'à l'horizontale.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+hip+thrust"
+  },
+  {
+    "name": "Corde à sauter",
+    "target": "Élasticité des chevilles et cardio",
+    "zone": "Tout le corps",
+    "description_base": "Sauter à un rythme régulier, en gardant les genoux souples et en rebondissant principalement sur l'avant du pied.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+corde+a+sauter+debutant"
+  },
+  {
+    "name": "Fentes latérales",
+    "target": "Adducteurs et force latérale",
+    "zone": "Bas du corps",
+    "description_base": "Faire un grand pas sur le côté, fléchir cette jambe en poussant les hanches vers l'arrière, tout en gardant l'autre jambe parfaitement tendue.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+fentes+laterales"
+  },
+  {
+    "name": "L'étirement le plus grand du monde",
+    "target": "Mobilité thoracique et hanches",
+    "zone": "Mobilité",
+    "description_base": "En position de fente avant profonde, poser la main opposée au sol et lever l'autre bras vers le plafond en effectuant une rotation du buste.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+etirement+le+plus+grand+du+monde"
+  },
+  {
+    "name": "Anges au mur (Wall Angels)",
+    "target": "Mobilité des épaules et posture",
+    "zone": "Mobilité",
+    "description_base": "Dos, tête, fesses et bras plaqués contre un mur. Faire glisser les bras vers le haut puis vers le bas sans jamais décoller le corps du mur.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+wall+angels+posture"
+  },
+  {
+    "name": "Crunch Bicyclette",
+    "target": "Abdominaux obliques",
+    "zone": "Gainage",
+    "description_base": "Allongé sur le dos, mains derrière la tête. Amener le coude droit vers le genou gauche tout en tendant la jambe droite, puis alterner.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+crunch+bicyclette"
+  },
+  {
+    "name": "Montées de genoux (High Knees)",
+    "target": "Cardio explosif (Zone 5)",
+    "zone": "Tout le corps",
+    "description_base": "Courir sur place en montant les genoux le plus haut et le plus rapidement possible au niveau de la taille. Garder le buste droit.",
+    "youtube_url": "https://www.youtube.com/results?search_query=tutoriel+montees+de+genoux"
+  }
+]

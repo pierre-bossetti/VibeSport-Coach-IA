@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "question": "Comment reinitialiser mon mot de passe ?",
+    "answer": "Depuis la page de connexion, cliquez sur le lien mot de passe oublie puis suivez les instructions recues par email.",
+    "tags": ["compte", "connexion", "mot-de-passe", "email"]
+  },
+  {
+    "id": 2,
+    "question": "Ou telecharger mon certificat de scolarite ?",
+    "answer": "Connectez-vous a l espace etudiant puis ouvrez la section Mes documents pour telecharger le certificat de scolarite.",
+    "tags": ["documents", "scolarite", "etudiant", "certificat"]
+  },
+  {
+    "id": 3,
+    "question": "Comment contacter le support informatique ?",
+    "answer": "Le support informatique est joignable par email a support@example.com du lundi au vendredi de 8h a 18h.",
+    "tags": ["support", "informatique", "contact", "email"]
+  }
+]

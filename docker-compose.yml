@@ -1,0 +1,24 @@
+services:
+  # 1. NOTRE MOTEUR IA (OLLAMA)
+  ollama:
+    image: ollama/ollama:latest
+    container_name: vibesport-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama # Sauvegarde le modèle pour ne pas le retélécharger à chaque fois
+
+  # 2. NOTRE APPLICATION (FASTAPI + FRONTEND)
+  web:
+    build: . # Construit l'image à partir de ton Dockerfile
+    container_name: vibesport-web
+    ports:
+      - "8000:8000"
+    environment:
+      # On dit à FastAPI d'aller chercher l'IA sur le conteneur "ollama"
+      - OLLAMA_BASE_URL=http://ollama:11434
+    depends_on:
+      - ollama # On s'assure qu'Ollama démarre en premier
+
+volumes:
+  ollama_data:
