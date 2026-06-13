@@ -26,62 +26,59 @@ class CoachService:
 
         catalog_str = json.dumps(filtered_exercises, ensure_ascii=False, indent=2)
 
+        # A. Calcul du nombre d'exercices (1 exercice = ~5-7 minutes)
+        if daily_state.available_time_min <= 20:
+            exo_count = 2
+        elif daily_state.available_time_min <= 30:
+            exo_count = 3
+        elif daily_state.available_time_min <= 45:
+            exo_count = 4
+        elif daily_state.available_time_min <= 60:
+            exo_count = 5
+        else:
+            exo_count = 6
+
+        # B. Traduction de l'énergie en consignes claires
+        if daily_state.energy_level <= 3:
+            energy_rules = "ÉNERGIE TRÈS BASSE : 1 à 2 séries MAX par exercice. Repos long (60 à 90 secondes). Répétitions faibles (5 à 8)."
+            vibe = "Récupération douce"
+        elif daily_state.energy_level <= 7:
+            energy_rules = "ÉNERGIE MOYENNE : 3 séries par exercice. Repos modéré (45 à 60 secondes). 8 à 12 répétitions."
+            vibe = "Séance équilibrée"
+        else:
+            energy_rules = "ÉNERGIE MAXIMALE : 4 séries. Repos court (30 secondes). 12 à 15 répétitions."
+            vibe = "Séance très intense"
+
         notes_section = f"\n- Demande spécifique : {daily_state.additional_notes}" if daily_state.additional_notes else ""
 
-        return f"""Tu es un coach sportif d'élite.
-Tu dois concevoir la meilleure séance possible pour cet athlète en piochant STRICTEMENT dans la liste d'exercices fournie.
+        return f"""Tu es un coach sportif d'élite. Ton but est de créer une {vibe}.
 
-PROFIL : {user.username}, Niveau: {user.fitness_level}, Sport: {', '.join(user.favorite_sports)}
-SÉANCE À CRÉER : 
-- Énergie: {daily_state.energy_level}/10 
-- Temps dispo: {daily_state.available_time_min} min
-- Matériel: {daily_state.equipment}{notes_section}
+PROFIL ATHLÈTE : Niveau: {user.fitness_level} | Sport: {', '.join(user.favorite_sports)}
+CONTRAINTES : Temps : {daily_state.available_time_min} min | Matériel : {daily_state.equipment}{notes_section}
 
-MENU D'EXERCICES PRÉ-SÉLECTIONNÉS (Choisis-en 3 à 5 là-dedans) :
+CATALOGUE D'EXERCISES :
 {catalog_str}
 
 RÈGLES ABSOLUES :
-1. N'utilise QUE le "name" exact des exercices du menu ci-dessus. N'invente AUCUN exercice.
-2. Définis des "sets", "reps" (répétitions logiques) et "rest_time" adaptés à l'énergie ({daily_state.energy_level}/10).
-3. Adapte la "description" pour expliquer l'intérêt de l'exercise par rapport à son sport favori ({user.favorite_sports[0] if user.favorite_sports else ''}).
-4. Renvoie le tout dans un format JSON valide.
-
-FORMAT JSON ATTENDU :
-{{
-    "title": "Un titre dynamique",
-    "intro_message": "Une phrase d'encouragement.",
-    "exercises": [
-        {{
-            "name": "Nom exact",
-            "sets": 3,
-            "reps": "12 reps",
-            "rest_time": "45 secondes",
-            "description": "Explication pertinente."
-        }}
-    ]
-}}
+1. NOMBRE : TU DOIS sélectionner EXACTEMENT {exo_count} exercices issus UNIQUEMENT du catalogue ci-dessus. Pas un de plus.
+2. INTENSITÉ : {energy_rules}
+3. PÉDAGOGIE : Dans la "description", justifie brièvement pourquoi l'exercice aide pour ({user.favorite_sports[0] if user.favorite_sports else ''}).
 """
 
     async def generate_session(self, user: UserOnboarding, daily_state: DailyWorkoutRequest) -> WorkoutResponse:
         system_prompt = self._build_system_prompt(user, daily_state)
-        user_prompt = "Génère mon entraînement au format JSON."
+        user_prompt = "Génère mon entraînement."
 
         raw_response = await self.ollama_service.chat(
             system_prompt=system_prompt,
-            user_prompt=user_prompt
+            user_prompt=user_prompt,
+            response_format=WorkoutResponse.model_json_schema()
         )
 
-        # Nettoyage de la réponse au cas où Ollama ne respecte pas le format JSON
-        cleaned_response = raw_response.strip()
-        if cleaned_response.startswith("```json"):
-            cleaned_response = cleaned_response[7:]
-        if cleaned_response.endswith("```"):
-            cleaned_response = cleaned_response[:-3]
-
         try:
-            parsed_data = json.loads(cleaned_response.strip())
+            parsed_data = json.loads(raw_response.strip())
 
-            # Sécurité : vérifier que "exercises" existe
+            # Vérifier que "exercises" existe
             if "exercises" not in parsed_data or not isinstance(parsed_data["exercises"], list):
                 raise ValueError("Liste d'exercices manquante")
 
