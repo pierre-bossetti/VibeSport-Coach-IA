@@ -12,11 +12,11 @@ class OllamaService:
         self.model = model
         self.timeout = timeout
 
-    async def chat(self, system_prompt: str, user_prompt: str) -> str:
+    async def chat(self, system_prompt: str, user_prompt: str, response_format: dict | str = "json") -> str:
         payload = {
             "model": self.model,
             "stream": False,
-            "format": "json",
+            "format": response_format,
             "options": {
                 "temperature": 0.2
             },
