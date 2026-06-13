@@ -145,7 +145,7 @@ document.getElementById("btnHistory").addEventListener("click", async () => {
         // On inverse le tableau pour voir la plus récente en haut
         history.slice().reverse().forEach((workout, index) => {
             html += `<div class="card mb-3 shadow-sm border-secondary"><div class="card-body">`;
-            html += `<h5>${workout.title}</h5><p class="text-muted small">${workout.intro_message}</p>`;
+            html += `<h5>${workout.title}</h5>`;
             html += `<ul>`;
             workout.exercises.forEach(exo => {
                 html += `<li><b>${exo.name}</b> (${exo.sets} séries)</li>`;
@@ -198,7 +198,6 @@ function renderWorkout(data) {
         <div class="card shadow mb-4 border-primary">
             <div class="card-body text-center bg-light rounded">
                 <h2 class="text-primary fw-bold">${data.title}</h2>
-                <p class="lead mb-0">${data.intro_message}</p>
             </div>
         </div>
         <div class="row">
@@ -212,8 +211,8 @@ function renderWorkout(data) {
                         <h5 class="card-title fw-bold text-dark">${exo.name}</h5>
                         <div class="mb-3">
                             <span class="badge bg-primary me-1">${exo.sets || 3} séries</span>
-                            <span class="badge bg-info text-dark me-1">${exo.reps_or_time || '10 reps'}</span>
-                            <span class="badge bg-secondary">Repos: ${exo.rest_time || '45s'}</span>
+                            <span class="badge bg-info text-dark me-1">${exo.reps || 10} reps</span>
+                            <span class="badge bg-secondary">Repos: ${exo.rest_time || '45s'}s</span>
                         </div>
                         <p class="card-text text-muted">${exo.description}</p>
                     </div>
