@@ -8,7 +8,9 @@ Cette application permet à un utilisateur de s'inscrire, de définir ses préf�
 
 ## 🚀 Démarrage Rapide
 
-Si vous avez **Docker Desktop** installé, lancez le projet en une seule commande depuis la racine du dossier :
+⚠️ **Prérequis indispensable :** Ce projet est entièrement conteneurisé. Vous devez obligatoirement avoir **Docker Desktop** installé et démarré sur votre machine.
+
+Lancez ensuite le projet en une seule commande depuis le terminal, à la racine du dossier :
 
 ```bash
 docker compose up -d --build
@@ -25,7 +27,7 @@ L'application repose sur un écosystème découplé et conteneurisé composé de
 
 1. **Le Frontend (Client d'interface) :** Une application conçue en HTML5, CSS3 (Bootstrap 5) et JavaScript Vanilla. Elle gère dynamiquement l'état local, le stockage persistant de la session et la restitution visuelle des séances générées avec des liens vers des tutoriels vidéos.
 2. **Le Backend (Serveur API REST) :** Une API développée avec **FastAPI (Python 3.11)**. Elle valide les payloads via **Pydantic**, expose la documentation Swagger et orchestre la logique métier de l'application.
-3. **Le Moteur LLM Local & RAG :** Le backend extrait un catalogue local d'exercices physiques (`exercises.json`), filtre les mouvements pertinents selon la zone ciblée par l'athlète, puis injecte ce menu ciblé dans un *System Prompt* transmis à **Ollama**. C'est le principe du **RAG (Retrieval-Augmented Generation)**, qui empêche l'IA d'inventer des exercises ou mouvements inexistants.
+3. **Le Moteur LLM Local & RAG :** Le backend extrait un catalogue local d'exercices physiques (`exercises.json`), filtre les mouvements pertinents selon la zone ciblée par l'athlète, puis injecte ce menu ciblé dans un *System Prompt* transmis à **Ollama**. C'est le principe du **RAG (Retrieval-Augmented Generation)**, qui empêche l'IA d'inventer des exercices ou mouvements inexistants.
 
 ---
 
@@ -151,7 +153,7 @@ Placez-vous à la racine du projet et exécutez l'unique commande d'assemblage :
 ```bash
 docker compose up -d --build
 ```
-C'est tout ! L'orchestration est entièrement automatisée. Grâce à un Bilan de santé (Healthcheck) sur le moteur IA et à un Conteneur d'initialisation (Init Container), le modèle llama3.2 se téléchargera tout seul en tâche de fond dès que le serveur sera prêt.
+L'orchestration est entièrement automatisée. Grâce à un Bilan de santé (Healthcheck) sur le moteur IA et à un Conteneur d'initialisation, le modèle llama3.2 se téléchargera tout seul en tâche de fond dès que le serveur sera prêt.
 
 Patientez simplement 1 à 2 minutes (selon votre connexion) jusqu'à ce que le conteneur vibesport-ollama-pull affiche "Exited (0)", puis accédez aux interfaces ci-dessous :
 
@@ -198,13 +200,12 @@ Pour prouver l'efficacité du "System Prompt" et du RAG, j'ai mené des tests de
   ```json
   {
     "title": "Haut du corps Express (Récupération)",
-    "intro_message": "On y va en douceur aujourd'hui pour respecter ton niveau d'énergie.",
     "exercises": [
       {
         "name": "Pompes sur les genoux",
         "sets": 2,
-        "reps": "10 reps",
-        "rest_time": "60 secondes",
+        "reps": 10,
+        "rest_time": 60,
         "description": "Idéal pour engager les pectoraux sans surcharger le système nerveux.",
         "youtube_search_url": "https://www.youtube.com/results?search_query=tutoriel+Pompes+sur+les+genoux"
       }
@@ -212,7 +213,16 @@ Pour prouver l'efficacité du "System Prompt" et du RAG, j'ai mené des tests de
   }
   ```
 
-### 📈 Analyse Critique et Évolution de la Sécurité
+### Analyse des Performances & Monitoring
+Lors de mes tests, j'ai remarqué que la génération d'une séance par l'IA prenait environ 1 à 2 minutes. En analysant les logs d'Ollama, j'ai constaté une vitesse de génération assez basse, tournant autour de 10 tokens par seconde.
+
+De plus, grâce au monitoring de Docker Desktop, j'ai observé que le conteneur gérant l'IA monopolisait littéralement le processeur lors de la génération, atteignant une utilisation de 1200% du CPU (utilisation maximale des 12 cœurs de mon Mac).
+
+J'ai découvert que cette surcharge et cette lenteur sont directement liées à l'utilisation de Docker sur macOS. En effet, le système d'Apple n'autorise pas les conteneurs Docker à utiliser la carte graphique (GPU). Le moteur Ollama est donc contraint de faire tous ses calculs uniquement sur le processeur classique (CPU), ce qui est beaucoup moins efficace pour ce type de tâche.
+
+C'est pour cette raison que la réponse de l'IA prend plus de temps via ce projet Dockerisé que si l'on utilisait l'application Ollama native. Pour compenser cela et garantir la stabilité de l'application, j'ai allongé le timeout du serveur et volontairement limité le nombre d'exercices que l'IA doit rédiger.
+
+### Évolution de la Sécurité
 
 Pour ce prototype (MVP), j'ai implémenté une sécurité de type **"Simple Auth"** (un jeton secret transmis dans les en-têtes HTTP) afin de protéger la route de génération d'exercices. C'est une première étape pour ne pas laisser l'API totalement ouverte, mais dans une vraie application, exposer une clé statique unique côté client reste limité.
 
