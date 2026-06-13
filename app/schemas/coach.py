@@ -18,12 +18,16 @@ class DailyWorkoutRequest(BaseModel):
 class Exercise(BaseModel):
     name: str
     sets: int = Field(..., description="Nombre de séries")
-    reps: str = Field(..., description="Ex: '12 répétitions' ou '30 secondes'")
-    rest_time: str = Field(..., description="Temps de repos, ex: '45 secondes'")
+    reps: int = Field(..., description="Ex: 'Nombre de répétitions'")
+    rest_time: int = Field(..., description="Le temps de repos STRICTEMENT en secondes (ex: 45, 60, 90)")
     description: str
     youtube_search_url: str = Field(..., description="Lien de recherche YouTube pour l'exercice")
 
 class WorkoutResponse(BaseModel):
     title: str = Field(..., description="Titre motivant de la séance")
-    intro_message: str = Field(..., description="Petit mot d'encouragement du coach")
-    exercises: list[Exercise]
+    exercises: list[Exercise] = Field(
+        ...,
+        min_length=2,
+        max_length=6,
+        description="Liste stricte contenant entre 2 et 6 exercices maximum."
+    )
