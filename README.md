@@ -16,8 +16,9 @@ Lancez ensuite le projet en une seule commande depuis le terminal, à la racine 
 docker compose up -d --build
 ```
 
-*💡 L'IA Llama 3.2 (2 Go) se téléchargera automatiquement en arrière-plan.
-Patientez 1 à 2 minutes, puis ouvrez [http://localhost:8000](http://localhost:8000).*
+*💡 L'IA Llama 3.2 (2 Go) se téléchargera automatiquement en arrière-plan. Patientez 1 à 2 minutes.
+Vous pouvez surveiller l'état du moteur IA **(ollama_status et model_status)** en direct en testant la route `/health` sur [http://localhost:8000/docs](http://localhost:8000/docs).
+Une fois le service opérationnel, ouvrez l'application sur [http://localhost:8000](http://localhost:8000).*
 
 ---
 
