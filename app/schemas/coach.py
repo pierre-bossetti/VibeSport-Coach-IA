@@ -12,17 +12,17 @@ class WorkoutRequest(BaseModel):
     available_time_min: int = Field(30, ge=10, le=120, description="Temps disponible en minutes")
     target_zone: str | None = Field("Tout le corps", description="Zone ciblée : Haut du corps, Bas du corps, Gainage, Tout le corps")
     equipment: str = Field("Aucun", description="Ex: Aucun, Haltères, Barre de traction")
-    additional_notes: str | None = Field(None, min_length=0, max_length=500, description="Texte libre optionnel sur les envies spécifiques")
+    additional_notes: str | None = Field("", min_length=0, max_length=500, description="Texte libre optionnel sur les envies spécifiques")
 
 # 3. La structure de la réponse de l'IA
 # Un exercise individuel
 class Exercise(BaseModel):
-    name: str
+    name: str = Field(..., description="Nom exact de l'exercice (DOIT correspondre à un exercice du catalogue fourni).")
     sets: int = Field(..., description="Nombre de séries (ex: 3, 4, 5)")
     reps: int = Field(..., description="Nombre de répétitions exactes (ex: 10, 12, 15)")
-    rest_time: int = Field(..., description="Le temps de repos STRICTEMENT en secondes (ex: 45, 60, 90)")
-    description: str
-    youtube_search_url: str = Field(..., description="Lien de recherche YouTube pour l'exercice")
+    rest_time: int = Field(..., description="Temps de repos entre chaque série, STRICTEMENT en secondes (ex: 45, 60, 90)")
+    description: str = Field(..., description="Explication de l'exercice et comment il aide l'utilisateur dans son sport favori.")
+    youtube_search_url: str = Field("", description="Lien de recherche YouTube pour l'exercice")
 
 # Le JSON renvoyé au Frontend
 class WorkoutResponse(BaseModel):
