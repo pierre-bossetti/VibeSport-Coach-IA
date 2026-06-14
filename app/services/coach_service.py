@@ -3,7 +3,7 @@ import random
 import urllib.parse
 from fastapi import HTTPException, status
 from app.services.ollama_service import OllamaService
-from app.schemas.coach import UserOnboarding, DailyWorkoutRequest, WorkoutResponse
+from app.schemas.coach import UserOnboarding, WorkoutRequest, WorkoutResponse
 
 class CoachService:
     def __init__(self, ollama_service: OllamaService, exercises_path: str):
@@ -12,11 +12,11 @@ class CoachService:
         with open(exercises_path, "r", encoding="utf-8") as f:
             self.exercises_catalog = json.load(f)
 
-    def _build_system_prompt(self, user: UserOnboarding, daily_state: DailyWorkoutRequest) -> str:
+    def _build_system_prompt(self, user: UserOnboarding, workout_request: WorkoutRequest) -> str:
         # 1. On filtre d'abord le catalogue par Zone !
         filtered_exercises = []
         for exo in self.exercises_catalog:
-            if daily_state.target_zone == "Tout le corps" or exo.get("zone") == daily_state.target_zone:
+            if workout_request.target_zone == "Tout le corps" or exo.get("zone") == workout_request.target_zone:
                 filtered_exercises.append(exo)
 
         # 2. Si la liste est trop longue, on tire au sort 10 exercices.
@@ -27,34 +27,34 @@ class CoachService:
         catalog_str = json.dumps(filtered_exercises, ensure_ascii=False, indent=2)
 
         # A. Calcul du nombre d'exercices (1 exercice = ~5-7 minutes)
-        if daily_state.available_time_min <= 20:
+        if workout_request.available_time_min <= 20:
             exo_count = 2
-        elif daily_state.available_time_min <= 30:
+        elif workout_request.available_time_min <= 30:
             exo_count = 3
-        elif daily_state.available_time_min <= 45:
+        elif workout_request.available_time_min <= 45:
             exo_count = 4
-        elif daily_state.available_time_min <= 60:
+        elif workout_request.available_time_min <= 60:
             exo_count = 5
         else:
             exo_count = 6
 
         # B. Traduction de l'énergie en consignes claires
-        if daily_state.energy_level <= 3:
+        if workout_request.energy_level <= 3:
             energy_rules = "ÉNERGIE TRÈS BASSE : 1 à 2 séries MAX par exercice. Repos long (60 à 90 secondes). Répétitions faibles (5 à 8)."
             vibe = "Récupération douce"
-        elif daily_state.energy_level <= 7:
+        elif workout_request.energy_level <= 7:
             energy_rules = "ÉNERGIE MOYENNE : 3 séries par exercice. Repos modéré (45 à 60 secondes). 8 à 12 répétitions."
             vibe = "Séance équilibrée"
         else:
             energy_rules = "ÉNERGIE MAXIMALE : 4 séries. Repos court (30 secondes). 12 à 15 répétitions."
             vibe = "Séance très intense"
 
-        notes_section = f"\n- Demande spécifique : {daily_state.additional_notes}" if daily_state.additional_notes else ""
+        notes_section = f"\n- Demande spécifique : {workout_request.additional_notes}" if workout_request.additional_notes else ""
 
         return f"""Tu es un coach sportif d'élite. Ton but est de créer une {vibe}.
 
 PROFIL ATHLÈTE : Niveau: {user.fitness_level} | Sport: {', '.join(user.favorite_sports)}
-CONTRAINTES : Temps : {daily_state.available_time_min} min | Matériel : {daily_state.equipment}{notes_section}
+CONTRAINTES : Temps : {workout_request.available_time_min} min | Matériel : {workout_request.equipment}{notes_section}
 
 CATALOGUE D'EXERCISES :
 {catalog_str}
@@ -65,8 +65,8 @@ RÈGLES ABSOLUES :
 3. PÉDAGOGIE : Dans la "description", justifie brièvement pourquoi l'exercice aide pour ({user.favorite_sports[0] if user.favorite_sports else ''}).
 """
 
-    async def generate_session(self, user: UserOnboarding, daily_state: DailyWorkoutRequest) -> WorkoutResponse:
-        system_prompt = self._build_system_prompt(user, daily_state)
+    async def generate_session(self, user: UserOnboarding, workout_request: WorkoutRequest) -> WorkoutResponse:
+        system_prompt = self._build_system_prompt(user, workout_request)
         user_prompt = "Génère mon entraînement."
 
         raw_response = await self.ollama_service.chat(

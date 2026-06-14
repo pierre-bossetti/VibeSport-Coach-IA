@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, status, Depends
-from app.schemas.coach import UserOnboarding, DailyWorkoutRequest, WorkoutResponse
+from app.schemas.coach import UserOnboarding, WorkoutRequest, WorkoutResponse
 from app.core.dependencies import get_coach_service, require_simple_api_token
 
 # 🌟 On change le préfixe principal pour /users
@@ -44,14 +44,14 @@ async def get_user_history(
 @router.post("/{username}/workouts/generate", response_model=WorkoutResponse, summary="Générer l'entraînement du jour par l'IA")
 async def generate_workout(
         username: str,
-        payload: DailyWorkoutRequest,
+        payload: WorkoutRequest,
         _: None = Depends(require_simple_api_token)
 ) -> WorkoutResponse:
     if username not in fake_users_db:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Utilisateur non trouvé.")
 
     user_profile = fake_users_db[username]
-    workout = await get_coach_service().generate_session(user=user_profile, daily_state=payload)
+    workout = await get_coach_service().generate_session(user=user_profile, workout_request=payload)
 
     if username not in fake_history_db:
         fake_history_db[username] = []
