@@ -222,6 +222,9 @@ J'ai découvert que cette surcharge et cette lenteur sont directement liées à 
 
 C'est pour cette raison que la réponse de l'IA prend plus de temps via ce projet Dockerisé que si l'on utilisait l'application Ollama native. Pour compenser cela et garantir la stabilité de l'application, j'ai allongé le timeout du serveur et volontairement limité le nombre d'exercices que l'IA doit rédiger.
 
+#### Optimisation par la réduction des Tokens (Output) :
+J'ai également constaté que la durée de génération est directement liée au nombre de tokens générés en sortie par le LLM. Grâce aux contraintes imposées par mon backend, si l'utilisateur indique avoir peu de temps ou une énergie basse, l'IA reçoit l'ordre de ne générer que 2 ou 3 exercices au lieu de 5. Le fichier JSON étant plus court, le modèle a besoin de générer beaucoup moins de tokens, ce qui accélère drastiquement le temps de réponse et soulage le processeur.
+
 ### Évolution de la Sécurité
 
 Pour ce prototype (MVP), j'ai implémenté une sécurité de type **"Simple Auth"** (un jeton secret transmis dans les en-têtes HTTP) afin de protéger la route de génération d'exercices. C'est une première étape pour ne pas laisser l'API totalement ouverte, mais dans une vraie application, exposer une clé statique unique côté client reste limité.
