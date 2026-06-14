@@ -111,7 +111,7 @@ document.getElementById("workoutForm").addEventListener("submit", async (e) => {
         renderWorkout(data); // Affiche la séance générée
 
     } catch (error) {
-        alert("Erreur lors de la génération. Ollama tourne-t-il bien ?");
+        alert("Le moteur IA n'est pas encore prêt. S'il s'agit du premier lancement, le modèle est en cours de téléchargement (patientez 1 à 2 minutes) ! ⏳");
     } finally {
         loadingZone.classList.add("d-none");
         btn.disabled = false;
