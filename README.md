@@ -218,7 +218,7 @@ Lors de mes tests, j'ai remarqué que la génération d'une séance par l'IA pre
 
 De plus, grâce au monitoring de Docker Desktop, j'ai observé que le conteneur gérant l'IA monopolisait littéralement le processeur lors de la génération, atteignant une utilisation de 1200% du CPU (utilisation maximale des 12 cœurs de mon Mac).
 
-J'ai découvert que cette surcharge et cette lenteur sont directement liées à l'utilisation de Docker sur macOS. En effet, le système d'Apple n'autorise pas les conteneurs Docker à utiliser la carte graphique (GPU). Le moteur Ollama est donc contraint de faire tous ses calculs uniquement sur le processeur classique (CPU), ce qui est beaucoup moins efficace pour ce type de tâche.
+J'ai découvert que cette surcharge et cette lenteur sont directement liées à l'utilisation de Docker sur macOS. En effet, le système d'Apple n'autorise pas les conteneurs Docker à utiliser la carte graphique (GPU). Le moteur Ollama est donc contraint de faire tous ses calculs uniquement sur le processeur classique (CPU), ce qui est beaucoup moins efficace pour ce type de tâche. Sources : [(Issue sur Github)](https://github.com/ollama/ollama/issues/3849#issuecomment-2075359242) | [Documentation Ollama](https://docs.ollama.com/faq#how-do-i-use-ollama-with-gpu-acceleration-in-docker)
 
 C'est pour cette raison que la réponse de l'IA prend plus de temps via ce projet Dockerisé que si l'on utilisait l'application Ollama native. Pour compenser cela et garantir la stabilité de l'application, j'ai allongé le timeout du serveur et volontairement limité le nombre d'exercices que l'IA doit rédiger.
 
